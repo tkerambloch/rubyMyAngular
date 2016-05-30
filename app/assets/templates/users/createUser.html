@@ -1,0 +1,62 @@
+<div class="container">
+    <ol class="breadcrumb">
+        <li><a href="#">home</a></li>
+        <li><a href="#/user/list">Users list</a></li>
+        <li class="active">Create user</li>
+    </ol>
+    <div class="tabs-container row">
+        <form class="form-horizontal" name="createUserForm" ng-submit="createUserFct()">
+            <div class="form-group">
+                <label class="control-label col-sm-2">Firstname</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" placeholder="Enter firstname" ng-model="createUser.firstname">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">Lastname</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" placeholder="Enter lastname" ng-model="createUser.lastname">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">Email address</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" placeholder="Enter email" ng-model="createUser.email" ng-required="true">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="inputPhoneNumber">Phone number</label>
+                <div class="col-sm-6">
+                    <input type="tel" class="form-control" id="inputPhoneNumber" autocomplete="off" placeholder="06 12 34 56 78" ng-model="createUser.phonenumber">
+                    <script>
+                        $("#inputPhoneNumber").intlTelInput({
+                            defaultCountry: "auto",
+                            utilsScript: "/assets/intl-tel-input/lib/libphonenumber/build/utils.js"
+                        });
+                    </script>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="inputPassword">Password</label>
+                <div class="col-sm-6">
+                    <input ng-show="showPassword" type="text" class="form-control" id="inputPassword" placeholder="Enter password" ng-model="createUser.password"  ng-required="true">
+                    <input ng-show="!showPassword" type="password" class="form-control" id="inputPassword" placeholder="Enter password" ng-model="createUser.password">
+                    <password-strength-bar password-to-check="createUser.password"></password-strength-bar>
+                </div>
+                <div class="col-sm-2">
+                    <input type="checkbox" ng-model="showPassword" ng-checked="false"> <label>Show password</label>
+                </div>
+            </div>
+            <div class="form-group" ng-class="{'has-error': createUserForm.password2.$invalid && createUserForm.password2.$error.match}">
+                <label class="control-label col-sm-2" for="inputPassword2">Confirm password</label>
+                <div class="col-sm-6">
+                    <input type="password" class="form-control" id="inputPassword2" placeholder="Confirm password" ng-model="createUser.password2" password-match="createUser.password">
+                </div>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-ruby" ng-disabled="createUserForm.$invalid">Save</button>
+            </div>
+        </form>
+    </div>
+</div>
+

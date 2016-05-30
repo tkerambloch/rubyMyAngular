@@ -1,0 +1,42 @@
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th ng-repeat="header in headers">
+            <sort-by onsort="onSort" sortdir="filterCriteria.sortDir" sortedby="filterCriteria.sortedBy" sortvalue="{{ header.value }}">
+                {{ header.title}}
+            </sort-by>
+        </th>
+    </tr>
+    <tr>
+        <th ng-repeat="header in headers">
+            <input ng-show="header.selectValues === undefined" class="form-control" on-enter-blur on-blur-change="filterResult(header.value)" ng-init="models[header.value] = header.default; searchBy[header.value] = header.default;" ng-model="models[header.value]" type="text"/>
+            <select ng-show="header.selectValues !== undefined" class="form-control" ng-change="filterResult(header.filterName || header.value)" ng-model="models[header.filterName || header.value]" ng-options="{{header.selectOptions || 'header for header in header.selectValues'}}">
+                <option value="" selected="selected"></option>
+            </select>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="object in model" ng-dblclick="clickGo(object)" style="cursor: pointer;">
+        <td ng-repeat="header in headers">{{resolve(object, header.value, header.type)}}</td>
+    </tr>
+    </tbody>
+</table>
+<div ng-show="count == 0">
+    <h3>No Entries Found</h3>
+</div>
+<div class="col-xs-12 col-sm-6 col-md-8 margin-bot-20">
+
+    <div ng-show="numPages > 1">
+        <pagination total-items="count" ng-model="filterCriteria.pageNumber" max-size="10" items-per-page="filterCriteria.pageSize" class="" boundary-links="true" rotate="false" num-pages="numPages"></pagination>
+    </div>
+</div>
+<div class="col-xs-6 col-md-4 margin-bot-20">
+    <div class="btn-group pull-right">
+        <label type="button" class="btn btn-default" ng-change="pageSizeChanges()" ng-model="filterCriteria.pageSize" btn-radio="10" uncheckable>10</label>
+        <label type="button" class="btn btn-default" ng-change="pageSizeChanges()" ng-model="filterCriteria.pageSize" btn-radio="25" uncheckable>25</label>
+        <label type="button" class="btn btn-default" ng-change="pageSizeChanges()" ng-model="filterCriteria.pageSize" btn-radio="50" uncheckable>50</label>
+        <label type="button" class="btn btn-default" ng-change="pageSizeChanges()" ng-model="filterCriteria.pageSize" btn-radio="100" uncheckable>100</label>
+    </div>
+</div>
+

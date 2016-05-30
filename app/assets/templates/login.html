@@ -1,0 +1,21 @@
+<div class="container">
+    <form class="form-signin" ng-submit="login()">
+        <div class="row">
+            <div class="col-md-12 pagination-centered"><img src="assets/tkerambloch-logo.png"></div>
+        </div>
+        <br>
+        <h2 class="form-signin-heading">ruby my angular</h2>
+        <br>
+        <div class="alert alert-danger" ng-show="loginFail">
+            {{loginErrorMessage}}
+        </div>
+        <div class="form-group" ng-class="{'has-error': loginFail}">
+            <input type="text" class="form-control" name="email" placeholder="Email address" required autofocus ng-model="userForm.email">
+            <input type="password" class="form-control" placeholder="Password" name="password" required ng-model="userForm.password">
+        </div>
+        <button class="btn btn-lg btn-success btn-block btn-ruby" type="submit" form-auto-fill-fix>Log in</button>
+        <p class="muted">&copy; 2014 T.Kerambloch SA</p>
+    </form>
+</div>
+
+

@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-10">
+            <ol class="breadcrumb">
+                <li><a href="#">home</a></li>
+                <li class="active">Users list</li>
+            </ol>
+        </div>
+        <div class="col-sm-2" >
+            <a href="#/user/create" class="btn btn-success btn-ruby pull-right btn-block">Create user</a>
+        </div>
+    </div>
+    <div class="tabs-container row">
+        <filtered-table headers="headers" filter-criteria="filterCriteria" model="usersList" go="go(object)" fetch-result="fetchResult()" count="usersCount"></filtered-table>
+    </div>
+</div>

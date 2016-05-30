@@ -1,0 +1,66 @@
+== README
+
+Project develop with RubyMine on Mac OS
+
+====Technology
+
+* Ruby version ruby 2.2.4p230
+* Ruby on Rails
+* MySql
+* REST FULL JSON API
+* AngularJS
+* Npm
+* Bower
+* Devise
+* JBuilder
+* Kaminari
+
+====Introduction
+
+This a Ruby on Rails project with AngularJs Framework.
+
+The project use "devise" ruby gem, for user authentification.
+He also use npm and bower, for download and use js/css module (like angular or bootstraap)
+
+You have only functionality for managing users (CRUD)
+
+====MANUAL TO INSTALL AND RUN
+
+You need to install node.js, see "https://nodejs.org/en/" and add node.js comande line in your path (you need npm comande).
+After that in your terminal, run "npm install -g bower".
+
+Then, in your terminal run "gem install rails".
+After that, go to your project, ex: "cd /home/zlatan/project/rubyMyAngular".
+then run "bundle install".
+
+This project use a MySql Database.
+See "config/database.yml" to change your identifiants for connect to mysql.
+You need to create database with name "rubyMyAngular_development" and give the privileges for this database to root user.
+Then in your terminal run "rake db:migrate".
+
+To get the npm and bower module, run : "npm install".
+For bower choose the option with "is required by rubyMyAngular":
+* angular#1.2.29 which resolved to 1.2.29 and is required by angular-animate#1.2.29, rubyMyNetworkAdmin
+
+To create users run in your terminal:
+"rails console"
+"user=User.create!(:email=>'pedro@pauleta.local',:password=>'pedropauleta',:firstname=>'pedro',:lastname=>'pauleta')"
+(see createFirstUser.txt File)
+
+Now the project is ready to run:
+tap "rails s" to start the project and in your browser go to "http://localhost:3000/"
+
+==== Architecture
+
+You can find:
+
+* angular view in /app/assets/templates
+* the /app/views/layouts/application.html.erb is the only "ruby view", indeed this file is the design base and include angular view
+* angular js file in /app/assets/javascripts
+* rails controller api in app/controllers/api (with base_controller.rb for generate CRUD method for all controllers, indeed user_controller.rb use bas_controller.rb for CRUD method)
+* api return JSON, go to views/api to see how json file is construct (with "jbuilder" ruby gem )
+* /db folder, you can find script for create database
+* /models folder, you can object data to manage database
+
+
+Thomas Kerambloch
