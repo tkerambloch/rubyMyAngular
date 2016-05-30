@@ -39,8 +39,6 @@ You need to create database with name "rubyMyAngular_development" and give the p
 Then in your terminal run "rake db:migrate".
 
 To get the npm and bower module, run : "npm install".
-For bower choose the option with "is required by rubyMyAngular":
-* angular#1.2.29 which resolved to 1.2.29 and is required by angular-animate#1.2.29, rubyMyNetworkAdmin
 
 To create users run in your terminal:
 "rails console"
